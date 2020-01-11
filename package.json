@@ -1,0 +1,24 @@
+{
+  "name": "SimpleUrlShortener",
+  "version": "1.0.0",
+  "description": "\" SimpleUrlShortener\"",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiraffeSummer/SimpleUrlShortener.git"
+  },
+  "author": "GiraffeSummer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GiraffeSummer/SimpleUrlShortener/issues"
+  },
+  "homepage": "https://github.com/GiraffeSummer/SimpleUrlShortener#readme"
+}

@@ -2,5 +2,5 @@
 
 title url shortener
 
-node index.js 
+npm start
 pause >nul
