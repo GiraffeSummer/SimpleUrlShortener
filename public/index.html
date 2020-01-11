@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Link Shortner</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+</head>
+
+<body> 
+    <div>
+        <h3>This is a link shortener, use with care</h3>
+
+        <form action="/" method="POST" id="shortenUrl">
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th><input type="text" name="title" value="" required></th>
+                </tr>
+                <tr>
+                    <th>Url</th>
+                    <th><input type="text" name="url" required value="https://google.com"></th>
+                </tr>
+                <tr>
+                    <th>Limit</th>
+                    <th><input type="number" name="limit" min="2" max="10000" value="100"></th>
+                </tr>
+            </table>
+            <input type="button" onclick="SubmitUrl()" value="Shorten">
+        </form>
+    </div>
+
+
+</body>
+
+</html>
