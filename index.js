@@ -62,11 +62,20 @@ app.get("/stats/:id/:path", (req, res) => {
         let ur = urls.find((o) => {
             return (o.id === conPath.id && o.path === conPath.path)
         })
+
+        if(!ur){
+            notFound()
+            return
+        }
+
+
         res.setHeader('Content-Type', 'application/json')
         res.send(ur)
-    } else {
+    }  else notFound()
+
+    function notFound(){
         res.setHeader('Content-Type', 'application/json')
-        res.send(["not found"])
+        res.send({status: 404, reason: "not found, limit was possibly reached"})
     }
 })
 
