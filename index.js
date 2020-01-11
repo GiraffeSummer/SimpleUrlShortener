@@ -12,18 +12,15 @@ app.use(express.static('public', {
     extensions: ['html']
 }));
 
-// parse application/json
 app.use(bodyParser.json())
 
 
 app.get('/:id/:path', (req, res) => {
-    console.log(req)
     let conPath = {
         id: "",
         path: ""
     }
     let con = req.originalUrl
-    console.log(con)
     if (con.length > 1) {
         con = con.split("/")
         con.shift()
@@ -36,7 +33,7 @@ app.get('/:id/:path', (req, res) => {
 
         let index = urls.indexOf(ur)
         ur.clicks += 1
-        console.log(`${ur.title} Was clicked(${ur.clicks}/${ur.limit}): ${ur.id}/${ur.path}`)
+        console.log(`${ur.title}: Was clicked(${ur.clicks}/${ur.limit}): ${ur.id}/${ur.path}`)
 
         if (ur.clicks >= ur.limit) {
             console.log("Limit Reached")
@@ -79,7 +76,6 @@ app.post('/', (req, res) => {
 
     let shorturl = CreateShortUrl(postUrl)
 
-    console.log(shorturl)
     res.setHeader('Content-Type', 'application/json')
     res.send(shorturl)
 })
@@ -95,6 +91,10 @@ app.get("/create", (req, res) => {
 })
 
 app.listen(port, () => {
+    if (!fs.existsSync(path))
+        fs.writeFileSync(path, "[]")
+
+
     urls = LoadJson(path)
     console.log(`url shortner app listening on port ${port}!`)
 
