@@ -3,8 +3,11 @@ function SubmitUrl() {
     let formdata = GetFormData(form);
 
     Post(formdata, "/").then(data => {
-        if (data.stats)
-            window.location.href = (data.stats)
+        if (data.stats) {
+            sessionStorage.setItem('short', JSON.stringify(data))
+            //window.location.href = (data.stats)
+            window.location.pathname = "/geturl"
+        }
         else
             alert("unsuccesful")
     })

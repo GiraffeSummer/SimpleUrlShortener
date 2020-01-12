@@ -23,3 +23,12 @@ form input[type=button] {
     padding: 10px;
     font-size: 14px;
 }
+
+p{
+    margin: 2px;
+}
+
+#urlStats th{
+    outline: 2px solid black;
+    
+}

@@ -42,7 +42,6 @@ app.get('/:id/:path', (req, res) => {
         else
             urls[index] = ur
 
-        SaveJson(urls, path)
         res.redirect(ur.url)
     }
 })
