@@ -6,7 +6,7 @@ function SubmitUrl() {
         if (data.stats) {
             sessionStorage.setItem('short', JSON.stringify(data))
             //window.location.href = (data.stats)
-            window.location.pathname = "/geturl"
+            window.location = `/geturl${"?"}url=${data.id}/${data.path}`
         }
         else
             alert("unsuccesful")
@@ -38,5 +38,23 @@ function Post(data, url) {
                 resolve(JSON.parse(xhr.responseText));
             }
         }
+    })
+}
+function getUrlParams() {
+    let vars = {};
+    let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+function GetURL(url, json = true) {
+    return new Promise(function (resolve) {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", url, false); // false for synchronous request
+        xmlHttp.send(null);
+        if (json)
+            resolve(JSON.parse(xmlHttp.responseText))
+        else
+            resolve(xmlHttp.responseText);
     })
 }
