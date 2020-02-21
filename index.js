@@ -35,7 +35,7 @@ app.get('/:id/:path', (req, res) => {
         ur.clicks += 1
         console.log(`${ur.title}: Was clicked(${ur.clicks}/${ur.limit}): ${ur.id}/${ur.path}`)
 
-        if (ur.clicks >= ur.limit) {
+        if (ur.clicks >= ur.limit && !ur.unlimited) {
             console.log("Limit Reached")
             urls.splice(index, 1)
         }
@@ -62,19 +62,18 @@ app.get("/stats/:id/:path", (req, res) => {
             return (o.id === conPath.id && o.path === conPath.path)
         })
 
-        if(!ur){
+        if (!ur) {
             notFound()
             return
         }
 
-
         res.setHeader('Content-Type', 'application/json')
         res.send(ur)
-    }  else notFound()
+    } else notFound()
 
-    function notFound(){
+    function notFound() {
         res.setHeader('Content-Type', 'application/json')
-        res.send({status: 404, reason: "not found, limit was possibly reached"})
+        res.send({ status: 404, reason: "not found, limit was possibly reached" })
     }
 })
 
@@ -102,7 +101,6 @@ app.listen(port, () => {
     if (!fs.existsSync(path))
         fs.writeFileSync(path, "[]")
 
-
     urls = LoadJson(path)
     console.log(`url shortner app listening on port ${port}!`)
 
@@ -123,7 +121,8 @@ function CreateShortUrl(postUrl) {
         shorturl: "",
         stats: "",
         clicks: 0,
-        limit: (postUrl.limit) ? Math.min(Math.max(postUrl.limit, 1), 10000) : 100
+        limit: (postUrl.limit) ? Math.min(Math.max(postUrl.limit, 1), 10000) : 100,
+        unlimited: false
     }
     shorturl.shorturl = `http://${postUrl.origin}/${shorturl.id}/${shorturl.path}`
     shorturl.stats = `http://${postUrl.origin}/stats/${shorturl.id}/${shorturl.path}`
