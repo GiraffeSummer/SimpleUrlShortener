@@ -14,6 +14,7 @@
 
 <body> 
     <div>
+        <a href="/api">Api info</a>
         <h3>This is a link shortener, use with care</h3>
 
         <form action="/" method="POST" id="shortenUrl">
@@ -28,7 +29,7 @@
                 </tr>
                 <tr>
                     <th>Limit</th>
-                    <th><input type="number" name="limit" min="2" max="10000" value="10"></th>
+                    <th><input type="number" name="limit" min="1" max="10000" value="2"></th>
                 </tr>
             </table>
             <input type="button" onclick="SubmitUrl()" value="Shorten">

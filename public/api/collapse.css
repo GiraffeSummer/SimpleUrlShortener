@@ -1,0 +1,53 @@
+.collapse{
+    padding: 10px;
+}
+
+.collapse input[type=checkbox] {
+    display: none;
+    visibility: hidden;
+}
+
+.collapse label {
+    padding: 10px;
+    display: block;
+    width: 100px;
+    background-color: lightgrey;
+}
+
+.collapse label::before {
+    font-weight: bold;
+    font-size: 15px;
+    /*content: "+";*/
+    vertical-align: text-top;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    background: radial-gradient(ellipse at center, #CCC 50%, transparent 50%);
+  }
+
+.collapse label:hover {
+    color: #000;
+    background-color: grey;
+}
+
+.collapse .content {
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.1s;
+}
+
+.collapse input[type=checkbox]:checked ~ .content {
+    padding: 10px;
+    height: 270px;
+    background-color: lightyellow;
+}
+
+.collapse input[type=checkbox]:checked ~ label::before {
+    /*content: "-";*/
+}
+
+pre {
+    white-space: pre-wrap;
+    background: hsl(30,80%,90%);
+}

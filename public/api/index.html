@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Link Shortner</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="collapse.css">
+    <script src="../main.js" defer></script>
+</head>
+</head>
+
+<body>
+    <div style="margin-left: 10px;">
+        <a href="/">Home</a>
+        <h3>Shortener api usage</h3>
+
+        <div>
+            <label for="baseurl">Base URL</label> <br>
+            <input style="width: 170px;padding: 5px;" id="baseurl" type="text" readonly
+                value="https://urls.cripplerick.com/">
+        </div>
+
+        <br><br>
+        <strong>Always use Base url </strong><br><br>
+        <div class="collapse">
+            <input id="toggle" type="checkbox">
+            <label for="toggle">GET request</label>
+            <div class="content">
+                /create<br>
+                Parameters:<br>
+                url: url to be shortened
+                <br><br>
+                Optional:<br>
+                title: title for url (RECOMMENDED)<br>
+                limit: max amount of clicks for it to be removed (default 10)<br>
+
+                <br><br><br>
+                Usage:<br>
+                /create?title=google&url=https://google.com/&limit=10
+
+            </div>
+        </div>
+
+        <div class="collapse">
+            <input id="togglea" type="checkbox">
+            <label for="togglea">POST request</label>
+            <div class="content">
+                / &nbsp;&nbsp;&nbsp; (post to baseurl)<br>
+                Parameters:<br>
+                url: url to be shortened
+                <br><br>
+                Optional:<br>
+                title: title for url (RECOMMENDED)<br>
+                limit: max amount of clicks for it to be removed (default 10)<br>
+            </div>
+        </div>
+
+        <div class="collapse">
+            <input id="toggleb" type="checkbox">
+            <label for="toggleb">Response</label>
+            <div class="content">
+                Content-Type: application/json
+                <br><br>
+                example
+                <pre>
+                <code>
+{
+    "title": "google",
+    "id": "B0",
+    "path": "0xFE6Vhf3h",
+    "url": "https://google.com/",
+    "shorturl": "http://urls.cripplerick.com/B0/0xFE6Vhf3h",
+    "stats": "http://urls.cripplerick.com/stats/B0/0xFE6Vhf3h",
+    "clicks": 0,
+    "limit": 10
+}
+    </code>
+                </pre>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

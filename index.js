@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const fs = require('fs')
 const app = express()
-const port = 3000
+const port = 4900
 
 let path = "./urls.json"
 let urls = []
@@ -30,6 +30,12 @@ app.get('/:id/:path', (req, res) => {
         let ur = urls.find((o) => {
             return (o.id === conPath.id && o.path === conPath.path)
         })
+
+        if (!ur) {
+            res.setHeader('Content-Type', 'application/json')
+            res.send({ status: 404, reason: "not found, limit was possibly reached" })
+            return
+        }
 
         let index = urls.indexOf(ur)
         ur.clicks += 1
@@ -121,7 +127,7 @@ function CreateShortUrl(postUrl) {
         shorturl: "",
         stats: "",
         clicks: 0,
-        limit: (postUrl.limit) ? Math.min(Math.max(postUrl.limit, 1), 10000) : 100,
+        limit: (postUrl.limit) ? Math.min(Math.max(postUrl.limit, 1), 10000) : 10,
         unlimited: false
     }
     shorturl.shorturl = `http://${postUrl.origin}/${shorturl.id}/${shorturl.path}`
